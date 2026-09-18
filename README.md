@@ -8,7 +8,7 @@
   ██    ██  ██  ██████   ████   ██  ██  ██████
 ```
 
-**Personal yt-dlp TUI — paste a link, grab, done.**
+**Personal yt-dlp TUI: paste a link, grab, done.**
 
 Works with YouTube, Instagram, TikTok, X, Threads, and 1800+ sites via [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 
@@ -23,12 +23,12 @@ Works with YouTube, Instagram, TikTok, X, Threads, and 1800+ sites via [yt-dlp](
 Minimal home screen: drop a URL, hit Enter (or click **grab**). First run asks once for a download folder; after that it just works.
 
 <p align="center">
-  <img src="docs/assets/home.jpg" alt="theOne home screen — paste a link and grab" width="720">
+  <img src="docs/assets/home.jpg" alt="theOne home screen: paste a link and grab" width="720">
 </p>
 
 ### Quality picker with in-TUI thumbnails
 
-YouTube (and similar) opens a format list with a sharp preview in the terminal — best, height caps, or audio-only. No external image viewer required (Kitty TGP / Sixel / half-cell).
+YouTube (and similar) opens a format list with a sharp preview in the terminal: best, height caps, or audio-only. No external image viewer required (Kitty TGP / Sixel / half-cell).
 
 <p align="center">
   <img src="docs/assets/format-picker.jpg" alt="Format picker with thumbnail and quality options" width="480">
@@ -44,16 +44,16 @@ Multi-image posts (Instagram and friends): preview the current slide, flip with 
 
 ### Also included
 
-- **Platform folders** — downloads land under `youtube/`, `instagram/`, `tiktok/`, `x/`, … inside your chosen directory
-- **Live progress** — percent, speed, and title while yt-dlp runs; `Esc` cancels
-- **Stream preview** — optional `mpv` play without saving (`p`)
-- **Themes** — auto / dark / light (`Ctrl+T`)
-- **Preferences** — audio bias (`Ctrl+A`), quality cap (`Ctrl+Q`), URL history (`↑` `↓`)
-- **Hardening knobs** — concurrent fragments, optional aria2c, `cookies_from_browser` for age gates / 403s
+- **Platform folders:** downloads land under `youtube/`, `instagram/`, `tiktok/`, `x/`, … inside your chosen directory
+- **Live progress:** percent, speed, and title while yt-dlp runs; `Esc` cancels
+- **Stream preview:** optional `mpv` play without saving (`p`)
+- **Themes:** auto / dark / light (`Ctrl+T`)
+- **Preferences:** audio bias (`Ctrl+A`), quality cap (`Ctrl+Q`), URL history (`↑` `↓`)
+- **Hardening knobs:** concurrent fragments, optional aria2c, `cookies_from_browser` for age gates / 403s
 
 ## Install
 
-**Needs:** Python 3.12+, a **recent** [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) on `PATH` (2025+ — distro packages are often too old), and [`ffmpeg`](https://ffmpeg.org/).
+**Needs:** Python 3.12+, a **recent** [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) on `PATH` (2025+, distro packages are often too old), and [`ffmpeg`](https://ffmpeg.org/).
 
 ```bash
 # yt-dlp (keep it fresh)
@@ -107,7 +107,7 @@ quality = "best"               # best | 1080 | 720
 audio_only = false
 concurrent_fragments = 8
 use_aria2c = false
-cookies_from_browser = "firefox"   # optional — helps with 403 / age gates
+cookies_from_browser = "firefox"   # optional: helps with 403 / age gates
 ```
 
 ### HTTP 403 Forbidden
