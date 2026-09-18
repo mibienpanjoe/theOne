@@ -1,12 +1,6 @@
 <div align="center">
 
-```text
-██████  ██  ██  ██████   ████   ██  ██  ██████
-  ██    ██  ██  ██      ██  ██  ███ ██  ██    
-  ██    ██████  █████   ██  ██  ██ ███  █████ 
-  ██    ██  ██  ██      ██  ██  ██  ██  ██    
-  ██    ██  ██  ██████   ████   ██  ██  ██████
-```
+<img src="docs/assets/logo.png" alt="theOne" width="168">
 
 **Personal yt-dlp TUI: paste a link, grab, done.**
 
