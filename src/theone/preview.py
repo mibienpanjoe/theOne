@@ -11,7 +11,7 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-from theone.downloader import ensure_yt_dlp
+from theone.downloader import ensure_yt_dlp, image_referer
 
 _BROWSER_UA = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
@@ -38,7 +38,7 @@ def _suffix_for_url(url: str) -> str:
     return ".jpg"
 
 
-async def _download_one(thumbnail_url: str) -> Path | None:
+async def _download_one(thumbnail_url: str, *, page_url: str | None = None) -> Path | None:
     path = thumbnail_cache_path(thumbnail_url).with_suffix(_suffix_for_url(thumbnail_url))
     if path.is_file() and path.stat().st_size > 0:
         return path
@@ -50,7 +50,7 @@ async def _download_one(thumbnail_url: str) -> Path | None:
             headers={
                 "User-Agent": _BROWSER_UA,
                 "Accept": "image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
-                "Referer": "https://www.instagram.com/",
+                "Referer": image_referer(thumbnail_url, page_url),
             },
         )
         with urllib.request.urlopen(req, timeout=8) as response, path.open("wb") as out:
@@ -123,7 +123,7 @@ async def download_thumbnail(
             unique.append(url)
 
     for url in unique:
-        path = await _download_one(url)
+        path = await _download_one(url, page_url=page_url)
         if path is not None:
             return path
 

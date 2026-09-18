@@ -326,6 +326,18 @@ _BROWSER_UA = (
 )
 
 
+def image_referer(url: str, page_url: str | None = None) -> str:
+    """CDN-appropriate Referer so Instagram / X media URLs fetch cleanly."""
+    hay = f"{url} {page_url or ''}".lower()
+    if "instagram" in hay or "cdninstagram" in hay:
+        return "https://www.instagram.com/"
+    if "twimg.com" in hay or "twitter.com" in hay or "x.com" in hay or "t.co" in hay:
+        return "https://x.com/"
+    if page_url and page_url.startswith("http"):
+        return page_url
+    return "https://www.google.com/"
+
+
 def _image_suffix(url: str) -> str:
     lower = url.lower().split("?", 1)[0]
     for ext in (".webp", ".png", ".jpeg", ".jpg"):
@@ -380,7 +392,7 @@ async def download_image(
             headers={
                 "User-Agent": _BROWSER_UA,
                 "Accept": "image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
-                "Referer": "https://www.instagram.com/",
+                "Referer": image_referer(image_url, page_url),
             },
         )
         with urllib.request.urlopen(req, timeout=30) as response, dest.open("wb") as out:

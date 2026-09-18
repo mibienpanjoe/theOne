@@ -87,8 +87,16 @@ def entry_has_video(info: dict) -> bool:
 
 
 def _looks_like_image_url(url: str) -> bool:
-    lower = url.lower().split("?", 1)[0]
-    return any(lower.endswith(ext) for ext in (".jpg", ".jpeg", ".png", ".webp"))
+    lower = url.lower()
+    path = lower.split("?", 1)[0]
+    if any(path.endswith(ext) for ext in (".jpg", ".jpeg", ".png", ".webp", ".gif")):
+        return True
+    # Twitter CDN often omits a file extension and uses ?format=jpg&name=orig
+    if "pbs.twimg.com/media/" in lower or "twimg.com/media/" in lower:
+        return True
+    if "format=jpg" in lower or "format=png" in lower or "format=webp" in lower:
+        return True
+    return False
 
 
 def pick_image_url(info: dict) -> str | None:
@@ -355,6 +363,11 @@ def probe_from_info(info: dict, url: str) -> ProbeResult:
 
     items = tuple(media_item_from_entry(entry, index) for index, entry in enumerate(entries, 1))
     first = items[0]
+    if first.kind == "image" and not first.image_url and not first.thumbnail_urls:
+        raise RuntimeError(
+            "No image URL found for this post.\n"
+            "X/Twitter photos sometimes need a retry, or cookies_from_browser in config."
+        )
     # Flatten choices for non-carousel UX / format picker: first item's choices
     # without forcing playlist_index when there's only one slide.
     if len(items) == 1:
@@ -443,6 +456,10 @@ async def fetch_probe(
     except json.JSONDecodeError as exc:
         raise RuntimeError(f"Could not parse yt-dlp JSON: {exc}") from exc
 
+    # yt-dlp skips still photos on X/Twitter — fill from syndication when needed.
+    from theone.twitter import enrich_twitter_info
+
+    info = await asyncio.to_thread(enrich_twitter_info, info, url)
     return probe_from_info(info, url)
 
 
