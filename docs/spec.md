@@ -74,8 +74,9 @@ uv run ruff format .
 pyproject.toml          # project metadata, entrypoint theOne
 README.md               # install + usage (minimal)
 docs/
-  spec.md               # this file
-  intent.md             # confirmed product intent
+  01_requirements_prd.md
+  02_requirements_srs.md
+  spec.md               # implementation notes / stack (companion)
 tasks/
   plan.md               # implementation plan (after spec approval)
   todo.md               # task checklist
