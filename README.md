@@ -22,7 +22,9 @@ Minimal home screen: drop a URL, hit Enter (or click **grab**). First run asks o
 
 ### Quality picker with in-TUI thumbnails
 
-YouTube (and similar) opens a format list with a sharp preview in the terminal: best, height caps, or audio-only. No external image viewer required (Kitty TGP / Sixel / half-cell).
+YouTube (and similar) opens a format list with a preview in the terminal: best, height caps, or audio-only. No external image viewer required.
+
+Previews are sharpest in [Kitty](https://sw.kovidgoyal.net/kitty/) (graphics protocol) or Sixel terminals (e.g. WezTerm, foot). Elsewhere (GNOME Terminal, etc.) theOne falls back to colored half-cell blocks, so the thumb looks blockier but still works.
 
 <p align="center">
   <img src="docs/assets/format-picker.jpg" alt="Format picker with thumbnail and quality options" width="480">
@@ -103,15 +105,6 @@ concurrent_fragments = 8
 use_aria2c = false
 cookies_from_browser = "firefox"   # optional: helps with 403 / age gates
 ```
-
-### HTTP 403 Forbidden
-
-Typical fixes:
-
-1. Install a JS runtime (`deno` or `node`) for YouTube signature decryption  
-2. Set `cookies_from_browser` in config  
-3. Update yt-dlp: `uv tool install --force yt-dlp`  
-4. Retry a lower quality  
 
 ## Docs & tests
 

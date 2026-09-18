@@ -223,6 +223,9 @@ class ConfirmGrabScreen(ModalScreen[FormatChoice | None]):
         height: 24;
         max-width: 100%;
     }
+    #confirm-thumb.thumb-halfcell {
+        height: 28;
+    }
     #confirm-note {
         text-align: center;
         width: 100%;
@@ -317,7 +320,7 @@ class ConfirmGrabScreen(ModalScreen[FormatChoice | None]):
         return " · ".join(parts)
 
     def compose(self) -> ComposeResult:
-        from theone.thumb import HalfcellThumb
+        from theone.thumb import HalfcellThumb, uses_halfcell
 
         title = self._probe.title or "Ready to grab"
         if len(title) > 48:
@@ -331,7 +334,8 @@ class ConfirmGrabScreen(ModalScreen[FormatChoice | None]):
                 if self._thumb_path is not None:
                     yield make_thumb(self._thumb_path, id="confirm-thumb")
                 else:
-                    yield HalfcellThumb(None, id="confirm-thumb")
+                    classes = "thumb-halfcell" if uses_halfcell() else None
+                    yield HalfcellThumb(None, id="confirm-thumb", classes=classes)
             yield Label(self._hint_text(), id="confirm-hint")
 
     def on_mount(self) -> None:
@@ -463,6 +467,9 @@ class FormatPickerScreen(ModalScreen[FormatChoice | None]):
         height: 14;
         max-width: 100%;
     }
+    #fmt-thumb.thumb-halfcell {
+        height: 18;
+    }
     #fmt-note {
         color: $text-muted;
         text-align: center;
@@ -472,6 +479,7 @@ class FormatPickerScreen(ModalScreen[FormatChoice | None]):
     }
     #fmt-list {
         height: auto;
+        min-height: 10;
         max-height: 14;
         border: none;
         background: $background;

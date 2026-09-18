@@ -79,6 +79,12 @@ def _best_image_widget() -> type[Widget]:
 ThumbImage = _best_image_widget()
 
 
+def uses_halfcell() -> bool:
+    """True when previews use half-cell blocks (no Kitty/Sixel graphics)."""
+    return ThumbImage is HalfcellThumb
+
+
 def make_thumb(path: Path | str, *, id: str | None = None) -> Widget:
     """Create an in-TUI thumbnail widget for a local image file."""
-    return ThumbImage(str(path), id=id)
+    classes = "thumb-halfcell" if uses_halfcell() else None
+    return ThumbImage(str(path), id=id, classes=classes)
