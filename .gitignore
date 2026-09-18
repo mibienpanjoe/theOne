@@ -1,0 +1,24 @@
+# Local / tooling
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+dist/
+build/
+.coverage
+htmlcov/
+uv.lock
+
+# Agent planning artifacts — never commit
+tasks/
+
+# Debug / browser capture artifacts
+.playwright-mcp/
+preview-ttyd-*.png
+
+# Runtime / local
+*.log
+.DS_Store

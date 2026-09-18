@@ -1,0 +1,42 @@
+[project]
+name = "theone"
+version = "0.1.0"
+description = "Personal yt-dlp TUI — paste a link, grab, done."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "textual>=2.0.0",
+    "textual-image[textual]>=0.14.0",
+]
+
+[project.scripts]
+theOne = "theone.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/theone"]
+
+[tool.hatch.build.targets.wheel.sources]
+"src/theone" = "theone"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.8.0",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
