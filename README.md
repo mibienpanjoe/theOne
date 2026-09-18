@@ -127,3 +127,7 @@ Product requirements: [`docs/01_requirements_prd.md`](docs/01_requirements_prd.m
 uv sync --group dev
 uv run pytest
 ```
+
+## License
+
+[MIT](LICENSE) · see [CONTRIBUTING.md](CONTRIBUTING.md) if you want to help.
