@@ -25,7 +25,7 @@ Build a personal daily-driver TUI for downloading single videos (or audio-only) 
 
 ### Acceptance criteria (v1)
 
-- [ ] Launch shows a Yoinks-like centered screen: title, tagline, platform line, labeled URL input, footer keyhints.
+- [ ] Launch shows a centered home screen: title, tagline, platform line, labeled URL input, footer keyhints.
 - [ ] Paste/type a URL + Enter starts a download with defaults (no flag hunting).
 - [ ] Audio-only mode available (shortcut and/or toggle) without leaving the TUI.
 - [ ] Download directory is configured once and reused from config.
@@ -207,7 +207,7 @@ History: `~/.config/theOne/history.json`
 - Playlists / queues / concurrent jobs
 - Account login or cookies manager UI (manual cookie file path may wait)
 - Web UI, mobile, packaging for others
-- Rebranding as or copying proprietary Yoinks assets
+- Branding or UI assets from other download apps
 
 ## Resolved decisions
 

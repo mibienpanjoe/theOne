@@ -101,7 +101,7 @@ class LinkBar(Horizontal):
 
 
 class KeyHints(Static):
-    """Sparse Yoinks-style footer."""
+    """Sparse footer of key hints."""
 
     DEFAULT_CSS = """
     KeyHints {

@@ -1,6 +1,6 @@
 # Intent: theOne
 
-- **Outcome:** Yoinks-style personal TUI — paste a link → grab → file on disk via yt-dlp
+- **Outcome:** Personal TUI — paste a link → grab → file on disk via yt-dlp
 - **User:** Personal daily driver (not a product launch)
 - **Why now:** Avoid yt-dlp flag/format friction; want paste → Enter with sensible defaults
 - **Success:** Instant-feeling open/paste; fixed download folder; readable titles; audio-only supported; optional deeper controls later
